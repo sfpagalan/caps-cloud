@@ -1,5 +1,7 @@
 const AWS = require('aws-sdk');
 
+jest.mock('aws-sdk');
+
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -7,6 +9,7 @@ AWS.config.update({
 });
 
 const sqs = new AWS.SQS();
+
 
 const pickupQueueUrl = process.env.PICKUP_QUEUE_URL;
 
